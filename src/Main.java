@@ -5,30 +5,53 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Set<Integer> x = new HashSet<>(Arrays.asList(1, 2, 3, 4));
-        Set<Integer> y = new HashSet<>(Arrays.asList(5, 2, 7, 1));
+
+        System.out.println("Intersection: " + getIntersection(Set.of(1, 2, 3, 4), Set.of(5, 2, 7, 1)));
+        System.out.println();
+        System.out.println("Difference = " + getDifference(Set.of(1, 2, 3, 4), Set.of(5, 2, 7, 1)));
+        System.out.println();
+        System.out.println(countWords(" "));
+        System.out.println();
+
+        List<Book> books = List.of(new Book("abc", "a", 123, Genre.HORROR),
+                new Book("abc2", "a", 1777, Genre.HORROR),
+                new Book("123", "b", 1230, Genre.COMEDY),
+                new Book("321", "b", 1243, Genre.COMEDY),
+                new Book("title", "c", 1923, Genre.HORROR),
+                new Book("title 2", "d", 2023, Genre.HORROR));
+
+        HashMap<String, List<Book>> getBooks = getBooks(books);
+        for (HashMap.Entry<String, List<Book>> k : getBooks.entrySet()) {
+            System.out.println(k);
+
+        }
+    }
+
+
+    public static Set<Integer> getIntersection(Set<Integer> x, Set<Integer> y) {
         Set<Integer> union = new HashSet<>();
-        for (Integer element : x) {
-            union.add(element);
-        }
-        for (Integer element : y) {
-            union.add(element);
-        }
-        Set<Integer> intersection = new HashSet<>();
-        for (Integer element : x) {
+        for (int element : x) {
             if (y.contains(element)) {
-                intersection.add(element);
+                union.add(element);
             }
+
         }
-        System.out.println("Intersection: " + intersection);
-        System.out.println("                              ");
+        return union;
+    }
+
+    public static Set<Integer> getDifference(Set<Integer> x, Set<Integer> y) {
+        Set<Integer> difference = new HashSet<>();
+        for (int element : x) {
+            if (!y.contains(element)) {
+                difference.add(element);
+            }
+
+        }
+        return difference;
+    }
 
 
-        x.removeAll(y);
-        System.out.println("Difference = " + x);
-        System.out.println("                              ");
-
-
+    public static HashMap<String, Integer> countWords(String str) {
         String string = "Hello this is a string that contains Hello and other words";
         String[] words = string.split("\\s+");
         HashMap<String, Integer> wordToCount = new HashMap<>();
@@ -39,10 +62,28 @@ public class Main {
             wordToCount.put(word, wordToCount.get(word) + 1);
         }
         for (String word : wordToCount.keySet()) {
-            System.out.println(word + " " + wordToCount.get(word));
+
         }
-        System.out.println("                              ");
+        return wordToCount;
     }
 
+
+    public static HashMap<String, List<Book>> getBooks(List<Book> books) {
+        HashMap<String, List<Book>> result = new HashMap<>();
+        for (Book book : books) {
+            String author = book.getAuthorName();
+            if (!result.containsKey(author)) {
+                List<Book> bookName = new ArrayList<>();
+                bookName.add(book);
+                result.put(author, bookName);
+            } else {
+                result.get(author).add(book);
+
+            }
+        }
+        return result;
+    }
 }
+
+
 

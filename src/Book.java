@@ -69,18 +69,8 @@ public class Book {
 
         System.out.println(book.getInfo());
 
-        System.out.println("                                  ");
+        System.out.println(" ");
 
-        HashMap<String, String> books = new HashMap<String, String>();
-        books.put("abc", "a , " + " release year:" + 123 + ", genre:" + Genre.HORROR);
-        books.put("abc2 ", "a , " + " release year:" + 1777 + ", genre:" + Genre.HORROR);
-        books.put("123 ", "b, " + " release year:" + 1230 + ", genre:" + Genre.COMEDY);
-        books.put("321 ", "b, " + " release year:" + 1243 + ", genre:" + Genre.COMEDY);
-        books.put("title ", "c, " + " release year:" + 1923 + ", genre:" + Genre.HORROR);
-        books.put("title 2 ", "d, " + " release year:" + 2023 + ", genre:" + Genre.HORROR);
-
-
-        System.out.println(books);
 
     }
 }
