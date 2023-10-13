@@ -59,10 +59,7 @@ public class Main {
                 wordToCount.put(word, 1);
             } else{
                 wordToCount.put(word, wordToCount.get(word) + 1);
-
-
             }
-
         }
         return wordToCount;
     }
