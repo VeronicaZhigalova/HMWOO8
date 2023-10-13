@@ -10,7 +10,7 @@ public class Main {
         System.out.println();
         System.out.println("Difference = " + getDifference(Set.of(1, 2, 3, 4), Set.of(5, 2, 7, 1)));
         System.out.println();
-        System.out.println(countWords(" "));
+        System.out.println(countWords("Hello this is a string that contains Hello and other words"));
         System.out.println();
 
         List<Book> books = List.of(new Book("abc", "a", 123, Genre.HORROR),
@@ -52,16 +52,16 @@ public class Main {
 
 
     public static HashMap<String, Integer> countWords(String str) {
-        String string = "Hello this is a string that contains Hello and other words";
-        String[] words = string.split("\\s+");
         HashMap<String, Integer> wordToCount = new HashMap<>();
-        for (String word : words) {
+        String [] string = str.split("\\s+");
+        for (String word : string) {
             if (!wordToCount.containsKey(word)) {
-                wordToCount.put(word, 0);
+                wordToCount.put(word, 1);
+            } else{
+                wordToCount.put(word, wordToCount.get(word) + 1);
+
+
             }
-            wordToCount.put(word, wordToCount.get(word) + 1);
-        }
-        for (String word : wordToCount.keySet()) {
 
         }
         return wordToCount;
